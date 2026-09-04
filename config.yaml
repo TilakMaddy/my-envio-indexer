@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=./node_modules/envio/evm.schema.json
+name: envio-indexer
+disable_default_cross_chain: true
+chains:
+- id: 42161
+  start_block: 0
+  contracts:
+  - name: FiatTokenProxy
+    address:
+    - "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    events:
+    - event: AdminChanged(address previousAdmin, address newAdmin)
+    - event: Approval(address indexed owner, address indexed spender, uint256 value)
+    - event: AuthorizationUsed(address indexed authorizer, bytes32 indexed nonce)
+    - event: Blacklisted(address indexed _account)
+    - event: BlacklisterChanged(address indexed newBlacklister)
+    - event: Burn(address indexed burner, uint256 amount)
+    - event: MasterMinterChanged(address indexed newMasterMinter)
+    - event: Mint(address indexed minter, address indexed to, uint256 amount)
+    - event: MinterConfigured(address indexed minter, uint256 minterAllowedAmount)
+    - event: MinterRemoved(address indexed oldMinter)
+    - event: OwnershipTransferred(address previousOwner, address newOwner)
+    - event: Pause()
+    - event: RescuerChanged(address indexed newRescuer)
+    - event: Transfer(address indexed from, address indexed to, uint256 value)
+    - event: UnBlacklisted(address indexed _account)
+    - event: Unpause()
+    - event: Upgraded(address implementation)
