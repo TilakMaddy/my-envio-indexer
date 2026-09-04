@@ -1,0 +1,9 @@
+.git
+.github
+.claude
+node_modules
+.env
+.envio
+build
+artifacts
+logs
