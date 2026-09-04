@@ -1,18 +1,22 @@
 import { describe, it } from "vitest";
-import { createTestIndexer, type FiatTokenProxy_AdminChanged } from "envio";
+import { createTestIndexer, type FiatTokenProxy_Approval } from "envio";
 import { TestHelpers } from "envio";
 
-describe("FiatTokenProxy contract AdminChanged event tests", () => {
-  it("FiatTokenProxy_AdminChanged is created correctly", async (t) => {
+// The simulated event lands on the chain's configured start_block.
+const START_BLOCK = 501626000;
+
+describe("FiatTokenProxy contract Approval event tests", () => {
+  it("FiatTokenProxy_Approval is created correctly", async (t) => {
     const indexer = createTestIndexer();
 
-    // Creating mock for FiatTokenProxy contract AdminChanged event
+    // Creating mock for FiatTokenProxy contract Approval event
     const event = {
       contract: "FiatTokenProxy" as const,
-      event: "AdminChanged" as const,
+      event: "Approval" as const,
       params: {
-        previousAdmin: TestHelpers.Addresses.defaultAddress,
-        newAdmin: TestHelpers.Addresses.defaultAddress,
+        owner: TestHelpers.Addresses.defaultAddress,
+        spender: TestHelpers.Addresses.defaultAddress,
+        value: 100n,
       },
     };
 
@@ -25,17 +29,18 @@ describe("FiatTokenProxy contract AdminChanged event tests", () => {
     });
 
     // Getting the actual entity from the test indexer
-    let actualFiatTokenProxyAdminChanged = await indexer.FiatTokenProxy_AdminChanged.getOrThrow("42161_0_0");
+    let actualFiatTokenProxyApproval = await indexer.FiatTokenProxy_Approval.getOrThrow(`42161_${START_BLOCK}_0`);
 
     // Creating the expected entity
-    const expectedFiatTokenProxyAdminChanged = {
-      id: "42161_0_0",
-      previousAdmin: event.params.previousAdmin,
-      newAdmin: event.params.newAdmin,
+    const expectedFiatTokenProxyApproval = {
+      id: `42161_${START_BLOCK}_0`,
+      owner: event.params.owner,
+      spender: event.params.spender,
+      value: event.params.value,
       chainId: 42161,
     };
     // Asserting that the entity in the mock database is the same as the expected entity
-    t.expect(actualFiatTokenProxyAdminChanged, "Actual FiatTokenProxyAdminChanged should be the same as the expected FiatTokenProxyAdminChanged").toEqual(expectedFiatTokenProxyAdminChanged);
+    t.expect(actualFiatTokenProxyApproval, "Actual FiatTokenProxyApproval should be the same as the expected FiatTokenProxyApproval").toEqual(expectedFiatTokenProxyApproval);
   });
 });
 

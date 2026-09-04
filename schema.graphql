@@ -1,30 +1,8 @@
-type FiatTokenProxy_AdminChanged {
-  id: ID!
-  previousAdmin: String!
-  newAdmin: String!
-}
-
 type FiatTokenProxy_Approval {
   id: ID!
   owner: String!
   spender: String!
   value: BigInt!
-}
-
-type FiatTokenProxy_AuthorizationUsed {
-  id: ID!
-  authorizer: String!
-  nonce: String!
-}
-
-type FiatTokenProxy_Blacklisted {
-  id: ID!
-  _account: String!
-}
-
-type FiatTokenProxy_BlacklisterChanged {
-  id: ID!
-  newBlacklister: String!
 }
 
 type FiatTokenProxy_Burn {
@@ -33,62 +11,9 @@ type FiatTokenProxy_Burn {
   amount: BigInt!
 }
 
-type FiatTokenProxy_MasterMinterChanged {
-  id: ID!
-  newMasterMinter: String!
-}
-
 type FiatTokenProxy_Mint {
   id: ID!
   minter: String!
   to: String!
   amount: BigInt!
 }
-
-type FiatTokenProxy_MinterConfigured {
-  id: ID!
-  minter: String!
-  minterAllowedAmount: BigInt!
-}
-
-type FiatTokenProxy_MinterRemoved {
-  id: ID!
-  oldMinter: String!
-}
-
-type FiatTokenProxy_OwnershipTransferred {
-  id: ID!
-  previousOwner: String!
-  newOwner: String!
-}
-
-type FiatTokenProxy_Pause {
-  id: ID!
-}
-
-type FiatTokenProxy_RescuerChanged {
-  id: ID!
-  newRescuer: String!
-}
-
-type FiatTokenProxy_Transfer {
-  id: ID!
-  from: String!
-  to: String!
-  value: BigInt!
-}
-
-type FiatTokenProxy_UnBlacklisted {
-  id: ID!
-  _account: String!
-}
-
-type FiatTokenProxy_Unpause {
-  id: ID!
-}
-
-type FiatTokenProxy_Upgraded {
-  id: ID!
-  implementation: String!
-}
-
