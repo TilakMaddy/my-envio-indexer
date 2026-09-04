@@ -8,11 +8,6 @@
 # A rolling update, node drain, evicted pod or OOMKill re-runs this script,
 # `envio start` resumes from the last indexed block, and the database is left
 # alone. Putting --restart in CMD instead would wipe on every one of those.
-#
-# Off by default: an unset INDEXER_AUTO_RESET means an incompatible config
-# crashloops the pod, exactly as it did before this script existed, and the wipe
-# stays a deliberate operator action. Set INDEXER_AUTO_RESET=true per
-# environment to opt in — sensible in staging, deliberate in production.
 set -uo pipefail
 
 readonly MARKER="incompatible with the existing indexer data"
@@ -51,11 +46,6 @@ status=$?
 # ordinary pod shutdown, not a failed boot, so exit quietly rather than logging
 # it as an error and weighing a reset.
 if [ $status -eq 143 ] || [ $status -eq 130 ]; then
-  exit $status
-fi
-
-if [ "${INDEXER_AUTO_RESET:-false}" != "true" ]; then
-  echo "envio start failed (exit $status); INDEXER_AUTO_RESET is not enabled, so the database is left alone" >&2
   exit $status
 fi
 
