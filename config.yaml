@@ -3,7 +3,7 @@ name: envio-indexer
 disable_default_cross_chain: true
 chains:
 - id: 42161
-  start_block: 0
+  start_block: 501626000
   contracts:
   - name: FiatTokenProxy
     address:
