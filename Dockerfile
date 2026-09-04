@@ -12,4 +12,4 @@ LABEL org.opencontainers.image.source=https://github.com/TilakMaddy/my-envio-ind
 COPY --from=build --chown=node:node /app ./
 USER node
 EXPOSE 9898
-CMD ["node", "node_modules/envio/bin.mjs", "start"]
+CMD ["./docker-entrypoint.sh"]
