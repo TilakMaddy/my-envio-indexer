@@ -8,6 +8,7 @@ RUN pnpm codegen
 
 FROM node:24-slim
 WORKDIR /app
+LABEL org.opencontainers.image.source=https://github.com/TilakMaddy/my-envio-indexer
 COPY --from=build --chown=node:node /app ./
 USER node
 EXPOSE 9898
