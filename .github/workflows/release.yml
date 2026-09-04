@@ -40,6 +40,7 @@ jobs:
           tags: |
             type=ref,event=branch
             type=sha,format=long,prefix=sha-
+            type=sha,format=short,prefix=sha-
 
       - name: Build and push
         uses: docker/build-push-action@v6
@@ -51,4 +52,4 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          provenance: false
+          provenance: mode=max
