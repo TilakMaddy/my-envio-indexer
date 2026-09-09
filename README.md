@@ -32,5 +32,3 @@ Everything else in this repo is stock `envio init` output. These four files are 
 | `.dockerignore` | Keeps `.git`, `node_modules`, `.env`, `.envio`, build output and logs out of the build context, so `COPY . .` picks up only source. |
 | `.github/workflows/release.yml` | On pushes to `staging` and `production`, builds the image for `linux/amd64` and `linux/arm64` and pushes it to GHCR, tagged by branch and commit SHA. |
 | `justfile` | `just build [tag]` builds the image locally; `just deploy-kind [tag]` loads it into the `local-platform` kind cluster and restarts the `indexer` statefulset in the `chain-indexer` namespace. |
-
-The Kubernetes manifests that consume the published image live in the separate `backoffice-dev` repo, not here.
