@@ -10,7 +10,6 @@ RUN pnpm codegen
 
 FROM node:24-slim
 WORKDIR /app
-LABEL org.opencontainers.image.source=https://github.com/TilakMaddy/my-envio-indexer
 COPY --from=build --chown=node:node /app ./
 
 # Starts the indexer, and re-runs it once with --restart if — and only if —
