@@ -37,10 +37,12 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ghcr.io/${{ github.repository }}
+          # sha tags are branch-prefixed so building the same commit on staging
+          # and production never moves one branch's sha tag onto the other's image.
           tags: |
             type=ref,event=branch
-            type=sha,format=long,prefix=sha-
-            type=sha,format=short,prefix=sha-
+            type=sha,format=long,prefix={{branch}}-sha-
+            type=sha,format=short,prefix={{branch}}-sha-
 
       - name: Build and push
         uses: docker/build-push-action@v6
