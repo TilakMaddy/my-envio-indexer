@@ -1,11 +1,6 @@
 ## Envio Indexer
 
-*Please refer to the [documentation website](https://docs.envio.dev) for a thorough guide on all [Envio](https://envio.dev) indexer features*
-
-### What is this template?
-
-This indexer template is built for compatibility with my main HyperIndex OpenInfra project - [https://github.com/TilakMaddy/hyperindex-openinfra](https://github.com/TilakMaddy/hyperindex-openinfra) - A free, self-hosted alternative to HyperIndex Cloud Offering that aims for 100% feature parity with @enviodev's dedicated plan.
-
+This indexer template is built to work with my main HyperIndex OpenInfra project - [https://github.com/TilakMaddy/hyperindex-openinfra](https://github.com/TilakMaddy/hyperindex-openinfra) - A free, self-hosted alternative to HyperIndex Cloud Offering that aims for 100% feature parity with @enviodev's dedicated plan.
 
 ### Customizations on Envio's scaffold
 
